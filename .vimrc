@@ -65,9 +65,6 @@ set foldlevel=99
 set spelllang=en,zh_CN
 set complete+=kspell
 
-" 设置主题
-colorscheme molokai
-
 " 设置字体（仅在 GUI 模式下）
 if has('gui_running')
   set guifont=Monaco:h12
@@ -90,14 +87,17 @@ Plugin 'VundleVim/Vundle.vim'
 " 语法高亮与补全插件
 " =============================================
 
-" 智能代码补全
-Plugin 'ycm-core/YouCompleteMe'
+" 智能代码补全（支持Vim 9.0的版本）
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " JavaScript 增强支持
 Plugin 'pangloss/vim-javascript'
 
 " JSX/TSX 语法高亮和格式化
 Plugin 'MaxMEllon/vim-jsx-pretty'
+
+" 主题插件
+Plugin 'tomasr/molokai'
 
 " CSS3 语法高亮
 Plugin 'hail2u/vim-css3-syntax'
@@ -175,6 +175,9 @@ Plugin 'jiangmiao/auto-pairs'
 " 初始化完成
 call vundle#end()
 
+" 设置主题（必须在Vundle初始化之后）
+colorscheme molokai
+
 " =============================================
 " 插件配置
 " =============================================
@@ -189,13 +192,37 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.git$', '\.svn$', '\.swp$', '\.swo$', '\~$']
 
 " =============================================
-" YouCompleteMe 配置
+" coc.nvim 配置
 " =============================================
-let g:ycm_server_python_interpreter = 'python3'
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
+" 启用代码补全
+let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-css',
+      \ 'coc-html',
+      \ 'coc-prettier',
+      \ 'coc-python',
+      \ 'coc-snippets',
+      \ 'coc-git',
+      \ 'coc-docker',
+      \ 'coc-markdownlint'
+      \]
+
+" 补全配置
+inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+inoremap <silent><expr> <C-space> coc#refresh()
+
+" 诊断配置
+nnoremap <silent> <F8> :CocDiagnostics<CR>
+nnoremap <silent> [g <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" 跳转到定义等
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gy <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
 
 " =============================================
 " ALE 配置
@@ -232,7 +259,7 @@ let g:ale_sign_warning = '⚠'
 let g:prettier#autoformat = 0
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#config#tab_width = 2
-let g:prettier#config#single_quote = true
+let g:prettier#config#single_quote = v:true
 
 " =============================================
 " Emmet 配置

@@ -79,7 +79,7 @@ vim +PluginInstall +qall
 - **Vundle.vim**: Vim 插件管理系统
 
 ### 语法高亮与补全
-- **YouCompleteMe**: 智能代码补全引擎
+- **coc.nvim**: 智能代码补全引擎（替代YouCompleteMe，支持更多语言）
 - **vim-javascript**: JavaScript 增强支持
 - **vim-jsx-pretty**: JSX/TSX 语法高亮和格式化
 - **vim-css3-syntax**: CSS3 语法高亮
@@ -127,7 +127,21 @@ evim filename
 
 ### 代码补全
 
-YouCompleteMe 提供智能代码补全，默认情况下会自动触发。也可以使用 `Tab` 键手动触发补全。
+coc.nvim 提供智能代码补全，默认情况下会自动触发。也可以使用 `Tab` 键手动触发补全。
+
+#### 补全快捷键
+- `<Tab>`: 选择补全项并确认
+- `<CR>`: 确认补全
+- `<C-space>`: 手动触发补全
+
+#### 诊断与跳转
+- `<F8>`: 查看所有诊断信息
+- `[g`: 跳转到上一个诊断
+- `]g`: 跳转到下一个诊断
+- `gd`: 跳转到定义
+- `gy`: 跳转到类型定义
+- `gi`: 跳转到实现
+- `gr`: 查看引用
 
 ### 文件类型特定功能
 
@@ -226,11 +240,17 @@ git clone https://github.com/username/plugin-name.git
 
 ### 代码补全不工作
 
-检查 YouCompleteMe 是否正确编译：
+检查 coc.nvim 扩展是否正确安装：
 
 ```bash
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --js-completer --ts-completer
+# 在 Vim 中运行
+:CocInstall coc-json coc-tsserver coc-css coc-html coc-prettier
+```
+
+确保 Node.js 已正确安装：
+
+```bash
+node --version
 ```
 
 ### 语法高亮问题

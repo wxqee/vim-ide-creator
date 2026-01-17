@@ -39,11 +39,12 @@ brew update
 
 # 安装 Vim（如果未安装或版本过低）
 echo "检查 Vim..."
-if ! command -v vim &> /dev/null || [ "$(vim --version | head -n 1 | awk '{print $5}')"  "8.0" ]; then
+if ! command -v vim &> /dev/null; then
   echo "安装 Vim..."
   brew install vim
 else
-  echo "Vim 已安装（版本：$(vim --version | head -n 1 | awk '{print $5}')）"
+  VIM_VERSION=$(vim --version | head -n 1 | awk '{print $5}')
+  echo "Vim 已安装（版本：$VIM_VERSION）"
 fi
 
 # 安装 Git（如果未安装）
@@ -112,11 +113,8 @@ ln -sf "$(pwd)/.vim" ~/.vim
 echo "安装 Vim 插件..."
 vim +PluginInstall +qall
 
-# 编译 YouCompleteMe
-echo "编译 YouCompleteMe 插件..."
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --js-completer --ts-completer
-cd - &> /dev/null
+# 配置 coc.nvim
+echo "coc.nvim 插件配置完成，首次启动 Vim 时会自动安装所需扩展"
 
 echo
 echo "========================================"
