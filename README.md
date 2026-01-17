@@ -31,6 +31,23 @@
 
 ## 安装步骤
 
+### 快速安装（推荐）
+
+使用自动化安装脚本一键完成所有配置：
+
+```bash
+# 克隆仓库
+git clone https://github.com/your-username/my_vim_ide_settings.git
+cd my_vim_ide_settings
+
+# 运行安装脚本（需要管理员权限）
+./install.sh
+```
+
+### 手动安装步骤
+
+如果您更倾向于手动配置，可以按照以下步骤进行：
+
 ### 1. 安装 Vim
 
 如果您的系统中没有 Vim 或版本过低，可以使用 Homebrew 安装最新版本：
@@ -79,27 +96,40 @@ vim +PluginInstall +qall
 - **Vundle.vim**: Vim 插件管理系统
 
 ### 语法高亮与补全
-- **coc.nvim**: 智能代码补全引擎（替代YouCompleteMe，支持更多语言）
+- **coc.nvim**: 智能代码补全引擎（支持Vim 9.0，替代YouCompleteMe）
 - **vim-javascript**: JavaScript 增强支持
 - **vim-jsx-pretty**: JSX/TSX 语法高亮和格式化
+- **tomasr/molokai**: 主题插件
 - **vim-css3-syntax**: CSS3 语法高亮
 - **typescript-vim**: TypeScript 支持
 - **python-mode**: Python 开发环境
+- **elzr/vim-json**: JSON 增强支持
+- **vim-scripts/SQLComplete.vim**: SQL 语法高亮和补全
+- **ekalinin/Dockerfile.vim**: Dockerfile 支持
+- **mattn/emmet-vim**: HTML 快速编码支持
+- **godlygeek/tabular**: Markdown 表格支持
+- **plasticboy/vim-markdown**: Markdown 增强支持
 
 ### 文件管理
 - **NERDTree**: 文件浏览器
+- **nerdtree-git-plugin**: NERDTree Git 集成
 - **vim-airline**: 状态栏增强
+- **vim-airline-themes**: 状态栏主题
 - **ctrlp.vim**: 文件搜索
+- **bufexplorer.zip**: 标签栏增强
 
 ### 代码质量
 - **ALE**: 异步 linting 引擎
 - **vim-prettier**: Prettier 代码格式化
 - **vim-fugitive**: Git 集成
+- **vim-gitgutter**: Git 更改指示器
 
 ### 其他增强
 - **emmet-vim**: Emmet 快速编码
 - **vim-surround**: 括号/标签操作
 - **vim-commentary**: 快速注释
+- **lilydjwg/colorizer.vim**: 颜色预览
+- **jiangmiao/auto-pairs**: 括号自动配对
 
 ## 使用指南
 
@@ -204,7 +234,7 @@ ysiw] = 在单词外添加方括号
 
 ### 修改主题
 
-在 `.vimrc` 中找到以下行并修改：
+在 `.vimrc` 文件的末尾找到以下行并修改（主题设置必须在Vundle初始化之后）：
 
 ```vim
 colorscheme molokai
