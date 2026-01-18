@@ -304,8 +304,8 @@ noremap <leader>p :tabprevious<CR>
 noremap <leader>d :tabclose<CR>
 
 " 代码编辑
-nnoremap <leader>f :Prettier<CR>
-vnoremap <leader>f :Prettier<CR>
+nnoremap <leader>f :ALEFix<CR>
+vnoremap <leader>f :ALEFix<CR>
 noremap <leader>/ :Commentary<CR>
 vnoremap <leader>/ :Commentary<CR>
 
