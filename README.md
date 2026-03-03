@@ -37,7 +37,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/my_vim_ide_settings.git
+git clone https://github.com/wxqee/vim-ide-creator.git
 cd my_vim_ide_settings
 
 # 运行安装脚本（需要管理员权限）
@@ -59,7 +59,7 @@ brew install vim
 ### 2. 克隆配置仓库
 
 ```bash
-git clone https://github.com/your-username/my_vim_ide_settings.git
+git clone https://github.com/wxqee/vim-ide-creator.git
 cd my_vim_ide_settings
 ```
 
